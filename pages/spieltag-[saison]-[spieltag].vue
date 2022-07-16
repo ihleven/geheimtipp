@@ -262,7 +262,7 @@ const spieltag = parseInt(route.params.spieltag);
 // const { data, pending, error } = await useFetch(
 //   `http://localhost:8000/api/comprounds/BL/${saison}/${spieltag}`
 // );
-const round = await $fetch(`http://localhost:8000/api/comprounds/BL/${saison}/${spieltag}`)
+const round = await $fetch(`/api/comprounds/BL/${saison}/${spieltag}`)
 console.log("error:", round)
 // const round = JSON.parse(data._value);
 // console.log(round)

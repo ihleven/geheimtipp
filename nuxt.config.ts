@@ -7,6 +7,9 @@ export default defineNuxtConfig({
   // proxy: {
   //   '/api/': { target: 'http://localhost:8000'}, //, pathRewrite: {'^/api/': ''} }
   // },
+  publicRuntimeConfig: {
+    API_BASE_URL: process.env.API_BASE_URL
+  },
 
   tailwindcss: {
     cssPath: '~/tailwind.css',
