@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.container-fluid {
+  @apply mx-auto;
+  width: calc(100vw - 2rem);
+}
+
+.container-fluid-lg {
+  @apply mx-auto;
+  width: theme('screens.lg');
+  max-width: calc(100vw - 1rem);
+
+  @media screen(sm) {
+    max-width: calc(100vw - 2rem);
+  }
+  @media screen(md) {
+    max-width: calc(100vw - 3rem);
+  }
+  @media screen(lg) {
+    max-width: calc(100vw - 4rem);
+  }
+}
+
+.container-fluid-md {
+  @apply mx-auto;
+  width: theme('screens.md');
+  max-width: calc(100vw - 2rem);
+}
