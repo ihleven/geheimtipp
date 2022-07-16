@@ -35,7 +35,7 @@
 const route = useRoute();
 
 const response = await useAsyncData('saison', () =>
-  $fetch(`http://localhost:8000/api/compseasons/BL/${route.params.saison}`)
+  $fetch(`/api/compseasons/BL/${route.params.saison}`)
 );
 const saison = response.data.value;
 </script>

@@ -2,16 +2,10 @@
   <main>
     <table class="text-sm table-auto">
       <tbody>
-        <tr
-          v-for="a in avatars"
-          :key="a.id"
-          class="odd:bg-white even:bg-gray-200 divide-y divide-gray-300"
-        >
+        <tr v-for="a in avatars" :key="a.id" class="odd:bg-white even:bg-gray-200 divide-y divide-gray-300">
           <td class="">
-            <img
-              class="max-w-none h-16 w-16 rounded-sm shadow-lg active:shadow"
-              :src="`http://localhost:8000/media/avatars/${a.id}/64`"
-            />
+            <img class="max-w-none h-16 w-16 rounded-sm shadow-lg active:shadow"
+              :src="`https://ihle.cloud/media/avatars/${a.id}/64`" />
           </td>
           <td>{{ a.id }}</td>
           <td>{{ a.aid }}</td>
@@ -34,8 +28,8 @@
 </template>
 
 <script setup>
-const { data, pending, error, refresh } = await useFetch(
-  `http://localhost:8000/api/avatars`
-);
+
+const api = useRuntimeConfig().API_BASE_URL + '/api'
+const { data, pending, error, refresh } = await useFetch(`${api}/avatars`);
 const avatars = JSON.parse(data.value);
 </script>

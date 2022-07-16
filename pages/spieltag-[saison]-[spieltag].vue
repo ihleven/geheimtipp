@@ -204,9 +204,7 @@
             class="font-family: 'Carter One',cursive; font-weight: 500; font-size: 1.6rem; white-space: nowrap; flex: 0 0 1.5rem; margin-right: 0; text-align: right;">
             {{ e.trikots.GELB?.platz }}.
           </div>
-          <img _ngcontent-c6=""
-            class="rounded self-center my-1 mx-4 bg-white border border-[#dee2e6] max-w-full h-[50px] flex: 0 0 50px;"
-            :src="`http://localhost:8000/media/avatars/${1}`" />
+          <img _ngcontent-c6="" class="${api}/media/avatars/${1}`" />
           <section _ngcontent-c6="" class="name">
             <h5 _ngcontent-c6="">
               {{ ght }}
@@ -239,6 +237,9 @@
 </template>
 
 <script setup>
+const config = useRuntimeConfig();
+const api = config.API_BASE_URL + '/api'
+
 const ght = useState('ght');
 
 const route = useRoute();
@@ -353,7 +354,7 @@ export default {
 
     async submitResults() {
       await $fetch(
-        `http://localhost:8000/api/comprounds/BL/${this.saison}/${this.spieltag}`,
+        `${api}/comprounds/BL/${this.saison}/${this.spieltag}`,
         {
           method: 'PUT',
           body: new URLSearchParams(
@@ -365,7 +366,7 @@ export default {
 
     async submitTipps() {
       await $fetch(
-        `http://localhost:8000/api/comprounds/BL/${this.saison}/${this.spieltag}/tipps`,
+        `${api}/comprounds/BL/${this.saison}/${this.spieltag}/tipps`,
         {
           method: 'PUT',
           body: new URLSearchParams({ ...this.mytipps }),

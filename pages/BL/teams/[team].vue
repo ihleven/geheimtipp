@@ -14,7 +14,7 @@ const route = useRoute();
 const team = route.params.club;
 
 const response = await useAsyncData('club', () =>
-  $fetch(`http://localhost:8000/api/compseasons/BL/${route.params.club}/teams`)
+  $fetch(`/api/compseasons/BL/${route.params.club}/teams`)
 );
 const club = JSON.parse(response.data.value);
 console.log(' * club =>', route.params.team, response.data.value);

@@ -23,7 +23,7 @@
 
 <script setup>
 const response = await useAsyncData('saisons', () =>
-  $fetch(`http://localhost:8000/api/compseasons/BL`)
+  $fetch(`/api/compseasons/BL`)
 );
 const saisons = response.data.value;
 console.log(saisons);

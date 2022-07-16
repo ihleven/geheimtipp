@@ -36,7 +36,7 @@ if (process.server) {
     );
     const ght = useState('ght', () => payload.Username);
 
-    const response = await $fetch(`http://localhost:8000/api/aktuell`, { parseResponse: JSON.parse, headers: { Cookie: `token=${token}` } });
+    const response = await $fetch(`/api/aktuell`, { parseResponse: JSON.parse, headers: { Cookie: `token=${token}` } });
     useState('aktuell', () => response);
     useState('login', () => response.ght);
     useState('registration', () => response.registration);

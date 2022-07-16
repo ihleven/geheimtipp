@@ -5,7 +5,7 @@ export default defineEventHandler(async (event) => {
 
   const body = await useBody(event);
   const params = new URLSearchParams(body);
-
+  console.log("config:", config.API_BASE_URL)
   const response = await $fetch.raw(`${config.API_BASE_URL}/api/login`, {
     method: 'POST',
     body: params
@@ -20,7 +20,7 @@ export default defineEventHandler(async (event) => {
   // }
 
   // const data = JSON.parse(response._data)
-  console.log('data:', response._data);
+  console.log('login data:', config.API_BASE_URL, response._data);
   setCookie(event.res, 'token', response._data.JWT, { httpOnly: false });
 
   return { ght: response._data };
