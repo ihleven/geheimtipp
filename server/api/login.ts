@@ -1,10 +1,12 @@
 import { useBody, setCookie } from 'h3';
 
 export default defineEventHandler(async (event) => {
+  const config = useRuntimeConfig();
+
   const body = await useBody(event);
   const params = new URLSearchParams(body);
 
-  const response = await $fetch.raw(`http://localhost:8000/api/login`, {
+  const response = await $fetch.raw(`${config.API_BASE_URL}/api/login`, {
     method: 'POST',
     body: params
   });
