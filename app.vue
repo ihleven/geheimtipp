@@ -29,18 +29,15 @@ const router = useRouter();
 if (process.server) {
   const token = useCookie('token').value;
   if (token) {
-
-    console.log("aktuell token", token)
     const payload = JSON.parse(
       Buffer.from(token.split('.')[1], 'base64').toString()
     );
     const ght = useState('ght', () => payload.Username);
 
-    const response = await $fetch(`/api/aktuell`, { parseResponse: JSON.parse, headers: { Cookie: `token=${token}` } });
+    const response = await $fetch(`/api/aktuell`, { parseResponse: JSON.parse, credentials: 'include', headers: { cookie: `token=${token}` } });
     useState('aktuell', () => response);
     useState('login', () => response.ght);
     useState('registration', () => response.registration);
-    console.log('app setup ght:', response.ght);
   } else {
     router.push({ path: "/login" });
   }

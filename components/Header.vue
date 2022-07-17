@@ -37,24 +37,24 @@
 <script>
 export default {
   setup() {
-    const num1 = ref(0);
-    const num2 = ref(0);
-    const fact = ref('');
-    const sum = computed(
-      () => parseInt(num1.value, 10) + parseInt(num2.value, 10)
-    );
+    // const num1 = ref(0);
+    // const num2 = ref(0);
+    // const fact = ref('');
+    // const sum = computed(
+    //   () => parseInt(num1.value, 10) + parseInt(num2.value, 10)
+    // );
 
-    watchEffect(async () => {
-      const res = await fetch(`http://numbersapi.com/${sum.value}`);
-      fact.value = await res.text();
-    });
+    // watchEffect(async () => {
+    //   const res = await fetch(`http://numbersapi.com/${sum.value}`);
+    //   fact.value = await res.text();
+    // });
 
-    return {
-      num1,
-      num2,
-      sum,
-      fact
-    };
+    // return {
+    //   num1,
+    //   num2,
+    //   sum,
+    //   fact
+    // };
   }
 };
 </script>

@@ -324,7 +324,7 @@ export default {
           const tipp = m.odds.tipps[this.ght];
           return [`${m.id}`, `${tipp.ht}:${tipp.at}`];
         }
-        return [`${m.teams[0]}${m.teams[1]}`, { login: 'asdf' }];
+        return [`${m.id}`, ``] // [`${m.teams[0]}${m.teams[1]}`, ``];
       });
       return Object.fromEntries(data);
     },
@@ -354,7 +354,7 @@ export default {
 
     async submitResults() {
       await $fetch(
-        `${api}/comprounds/BL/${this.saison}/${this.spieltag}`,
+        `/api/comprounds/BL/${this.saison}/${this.spieltag}`,
         {
           method: 'PUT',
           body: new URLSearchParams(
@@ -366,13 +366,13 @@ export default {
 
     async submitTipps() {
       await $fetch(
-        `${api}/comprounds/BL/${this.saison}/${this.spieltag}/tipps`,
+        `/api/comprounds/BL/${this.saison}/${this.spieltag}/tipps`,
         {
           method: 'PUT',
           body: new URLSearchParams({ ...this.mytipps }),
           credentials: 'include',
           headers: {
-            Cookie: `token=${useCookie(['token']).value}`
+            cookie: `token=${useCookie(['token']).value}`
           }
         }
       );
