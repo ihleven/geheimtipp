@@ -30,7 +30,7 @@ if (process.server) {
   const token = useCookie('token').value;
   if (token) {
 
-    console.log("token", token)
+    console.log("aktuell token", token)
     const payload = JSON.parse(
       Buffer.from(token.split('.')[1], 'base64').toString()
     );
